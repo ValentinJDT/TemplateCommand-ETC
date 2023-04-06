@@ -9,7 +9,7 @@ import java.util.zip.ZipFile
 class TemplateCommand: Command("template", "Create an addon template for EmptyTerminal") {
 
     override fun execute(args: List<String>) {
-        if(args.isEmpty() || args.size == 1) {
+        if(args.size < 2) {
             println("Use: template <plugin|command> <output>")
             return
         }
