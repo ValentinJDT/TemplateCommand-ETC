@@ -1,7 +1,6 @@
 package fr.valentin.plugin.command
 
 import fr.valentin.api.plugin.Command
-import fr.valentin.emptyterminal.App
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
