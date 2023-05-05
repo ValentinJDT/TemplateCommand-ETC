@@ -1,12 +1,12 @@
 package fr.valentin.plugin.command
 
-import fr.valentin.api.plugin.Command
+import fr.valentin.lib.vallib.plugin.Command
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.zip.ZipFile
 
-class TemplateCommand: Command("template", "Create an addon template for EmptyTerminal") {
+class TemplateCommand : Command("template", "Create an addon template for EmptyTerminal") {
 
     override fun execute(args: List<String>) {
         if(args.size < 2) {
@@ -26,7 +26,8 @@ class TemplateCommand: Command("template", "Create an addon template for EmptyTe
     private fun createPlugin(outputDir: String) {
         println("Creating plugin template...")
         val classLoader = this::class.java.classLoader
-        classLoader.getResourceAsStream("ExamplePlugin.zip")?.use { Files.copy(it, Paths.get("$outputDir/ExamplePlugin.zip")) }
+        classLoader.getResourceAsStream("ExamplePlugin.zip")
+            ?.use { Files.copy(it, Paths.get("$outputDir/ExamplePlugin.zip")) }
 
         unzipFile("$outputDir/ExamplePlugin.zip", outputDir)
 
@@ -39,7 +40,8 @@ class TemplateCommand: Command("template", "Create an addon template for EmptyTe
         println("Creating plugin template...")
 
         val classLoader = this::class.java.classLoader
-        classLoader.getResourceAsStream("ExampleCommand.zip")?.use { Files.copy(it, Paths.get("$outputDir/ExampleCommand.zip")) }
+        classLoader.getResourceAsStream("ExampleCommand.zip")
+            ?.use { Files.copy(it, Paths.get("$outputDir/ExampleCommand.zip")) }
 
         unzipFile("$outputDir/ExampleCommand.zip", outputDir)
 

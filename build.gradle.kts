@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation(files("dependencies/API-1.0-SNAPSHOT.jar"))
+    implementation(files("dependencies/ValLib-0.1.0.jar"))
 }
 
 tasks.test {
