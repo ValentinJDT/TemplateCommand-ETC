@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation(files("dependencies/ValLib-0.1.0.jar"))
+    implementation(files("dependencies/ValLib-0.1.2.jar"))
 }
 
 kotlin {
