@@ -29,7 +29,11 @@ class TemplateCommand : Command("template", "Create an addon template for EmptyT
         classLoader.getResourceAsStream("ExamplePlugin.zip")
             ?.use { Files.copy(it, Paths.get("$outputDir/ExamplePlugin.zip")) }
 
-        unzipFile("$outputDir/ExamplePlugin.zip", outputDir)
+        val outputDirFile = File(outputDir + "/ExamplePlugin")
+        if(!outputDirFile.exists())
+            outputDirFile.mkdir()
+
+        unzipFile("$outputDir/ExamplePlugin.zip", outputDir + "/ExamplePlugin")
 
         File("$outputDir/ExamplePlugin.zip").delete()
 
@@ -43,7 +47,11 @@ class TemplateCommand : Command("template", "Create an addon template for EmptyT
         classLoader.getResourceAsStream("ExampleCommand.zip")
             ?.use { Files.copy(it, Paths.get("$outputDir/ExampleCommand.zip")) }
 
-        unzipFile("$outputDir/ExampleCommand.zip", outputDir)
+        val outputDirFile = File(outputDir + "/ExampleCommand")
+        if(!outputDirFile.exists())
+            outputDirFile.mkdir()
+
+        unzipFile("$outputDir/ExampleCommand.zip", outputDir + "/ExampleCommand")
 
         File("$outputDir/ExampleCommand.zip").delete()
 
