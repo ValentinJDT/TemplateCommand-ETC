@@ -24,14 +24,20 @@ class TemplateCommand : Command("template", "Create an addon template for EmptyT
     }
 
     private fun createPlugin(outputDir: String) {
+        val outputDirFile = File(outputDir)
+        if(!outputDirFile.exists()) {
+            throw NoSuchFileException(outputDirFile)
+        }
+
         println("Creating plugin template...")
+
         val classLoader = this::class.java.classLoader
         classLoader.getResourceAsStream("ExamplePlugin.zip")
             ?.use { Files.copy(it, Paths.get("$outputDir/ExamplePlugin.zip")) }
 
-        val outputDirFile = File(outputDir + "/ExamplePlugin")
-        if(!outputDirFile.exists())
-            outputDirFile.mkdir()
+        val outputDirFileSecond = File(outputDir + "/ExamplePlugin")
+        if(!outputDirFileSecond.exists())
+            outputDirFileSecond.mkdir()
 
         unzipFile("$outputDir/ExamplePlugin.zip", outputDir + "/ExamplePlugin")
 
@@ -41,15 +47,20 @@ class TemplateCommand : Command("template", "Create an addon template for EmptyT
     }
 
     private fun createCommand(outputDir: String) {
+        val outputDirFile = File(outputDir)
+        if(!outputDirFile.exists()) {
+            throw NoSuchFileException(outputDirFile)
+        }
+
         println("Creating plugin template...")
 
         val classLoader = this::class.java.classLoader
         classLoader.getResourceAsStream("ExampleCommand.zip")
             ?.use { Files.copy(it, Paths.get("$outputDir/ExampleCommand.zip")) }
 
-        val outputDirFile = File(outputDir + "/ExampleCommand")
-        if(!outputDirFile.exists())
-            outputDirFile.mkdir()
+        val outputDirFileSecond = File(outputDir + "/ExampleCommand")
+        if(!outputDirFileSecond.exists())
+            outputDirFileSecond.mkdir()
 
         unzipFile("$outputDir/ExampleCommand.zip", outputDir + "/ExampleCommand")
 
